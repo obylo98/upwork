@@ -1,0 +1,13 @@
+name: Scheduled RSS Fetch
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"  # Every 2 hours
+
+jobs:
+  fetch_rss:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Vercel Endpoint
+        run: curl -X GET https://<your-vercel-project>.vercel.app/api/index
